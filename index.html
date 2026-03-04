@@ -1,14 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Vocabulary</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <h1>My Vocabulary</h1>
+    </header>
+    <main>
+        <form id="add-word-form">
+            <input type="text" id="word-input" placeholder="Enter a new word" required>
+            <input type="text" id="meaning-input" placeholder="Enter the meaning" required>
+            <button type="submit">Add Word</button>
+        </form>
+        <div id="word-list"></div>
+    </main>
+
+    <template id="word-card-template">
+        <div class="word-card">
+            <div class="word"></div>
+            <div class="meaning"></div>
+            <button class="delete-btn">Delete</button>
+        </div>
+    </template>
+
+    <script src="main.js"></script>
 </body>
 </html>
