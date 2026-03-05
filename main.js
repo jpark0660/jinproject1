@@ -9,9 +9,15 @@ class WordCard extends HTMLElement {
     connectedCallback() {
         this.shadowRoot.querySelector('.word').innerText = this.getAttribute('word');
         this.shadowRoot.querySelector('.meaning').innerText = this.getAttribute('meaning');
-        this.shadowRoot.querySelector('.delete-btn').addEventListener('click', () => {
+        this.shadowRoot.querySelector('.delete-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
             this.remove();
             removeWordFromLocalStorage(this.getAttribute('word'));
+            hideWordDetails();
+        });
+
+        this.addEventListener('click', () => {
+            showWordDetails(this.getAttribute('word'), this.getAttribute('meaning'));
         });
 
         // Apply external styles to the shadow DOM
@@ -27,6 +33,7 @@ customElements.define('word-card', WordCard);
 
 const addWordForm = document.getElementById('add-word-form');
 const wordList = document.getElementById('word-list');
+const wordDetailsContainer = document.getElementById('word-details-container');
 
 addWordForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -48,6 +55,29 @@ function addWordToList(word, meaning) {
     wordCard.setAttribute('word', word);
     wordCard.setAttribute('meaning', meaning);
     wordList.appendChild(wordCard);
+}
+
+async function showWordDetails(word, meaning) {
+    wordDetailsContainer.innerHTML = `
+        <h2>${word}</h2>
+        <p><strong>의미:</strong> ${meaning}</p>
+        <p><strong>유사어:</strong> <span id="synonyms">불러오는 중...</span></p>
+    `;
+    wordDetailsContainer.style.display = 'block';
+
+    try {
+        const response = await fetch(`https://api.datamuse.com/words?rel_syn=${word}`);
+        const synonyms = await response.json();
+        const synonymsList = synonyms.map(s => s.word).join(', ');
+        document.getElementById('synonyms').innerText = synonymsList || '찾을 수 없음';
+    } catch (error) {
+        console.error('유사어를 불러오는 데 실패했습니다:', error);
+        document.getElementById('synonyms').innerText = '오류 발생';
+    }
+}
+
+function hideWordDetails() {
+    wordDetailsContainer.style.display = 'none';
 }
 
 function saveWordToLocalStorage(word, meaning) {

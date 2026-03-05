@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Vocabulary</title>
+    <title>나의 단어장</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>My Vocabulary</h1>
+        <h1>나의 단어장</h1>
     </header>
     <main>
         <form id="add-word-form">
-            <input type="text" id="word-input" placeholder="Enter a new word" required>
-            <input type="text" id="meaning-input" placeholder="Enter the meaning" required>
-            <button type="submit">Add Word</button>
+            <input type="text" id="word-input" placeholder="새 단어 입력" required>
+            <input type="text" id="meaning-input" placeholder="의미 입력" required>
+            <button type="submit">단어 추가</button>
         </form>
         <div id="word-list"></div>
+        <div id="word-details-container"></div>
     </main>
 
     <template id="word-card-template">
         <div class="word-card">
             <div class="word"></div>
             <div class="meaning"></div>
-            <button class="delete-btn">Delete</button>
+            <button class="delete-btn">삭제</button>
         </div>
     </template>
 

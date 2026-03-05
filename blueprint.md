@@ -1,36 +1,23 @@
+# 프로젝트 개요
 
-# Blueprint: SAT Vocabulary Quiz
+이 프로젝트는 사용자가 새로운 단어와 그 의미를 저장하고 관리할 수 있는 간단한 웹 기반 단어장 애플리케이션입니다. 사용자는 단어를 추가, 삭제하고, 저장된 단어 목록을 볼 수 있습니다. 단어를 클릭하면 Datamuse API를 통해 가져온 유사어와 함께 단어의 의미를 자세히 볼 수 있습니다.
 
-## Overview
+# 스타일 및 디자인
 
-This application is an interactive quiz for learning SAT vocabulary. It presents words in a multiple-choice format and is organized by difficulty levels to provide a structured learning experience.
+- **레이아웃:** 반응형 그리드 레이아웃을 사용하여 다양한 화면 크기에 맞게 단어 카드를 정렬합니다.
+- **색상:** 파란색 계열을 사용하여 차분하고 현대적인 느낌을 줍니다.
+- **글꼴:** 가독성이 좋은 sans-serif 글꼴을 사용합니다.
+- **구성 요소:** 그림자 효과가 있는 카드를 사용하여 각 단어를 시각적으로 구분합니다.
 
-## Style, Design, and Features
+# 기능
 
-### Design Principles
-*   **Aesthetics:** Clean, focused, and encouraging.
-*   **Color Palette:** A motivating color scheme that uses distinct colors for feedback (correct/incorrect answers).
-*   **Typography:** Clear and legible fonts for easy reading during the quiz.
-*   **Layout:** A responsive, single-page interface that works well on all devices.
-*   **Interactivity:** Smooth transitions and immediate feedback for user actions.
+- **단어 추가:** 사용자는 단어와 의미를 입력하여 목록에 추가할 수 있습니다.
+- **단어 삭제:** 각 단어 카드에는 해당 단어를 목록에서 제거하는 삭제 버튼이 있습니다.
+- **영구 저장:** 단어는 브라우저의 로컬 저장소에 저장되므로 페이지를 새로 고쳐도 데이터가 유지됩니다.
+- **유사어 표시:** 단어 카드를 클릭하면 Datamuse API를 사용하여 가져온 유사어와 함께 단어의 의미가 표시됩니다.
 
-### Core Features
-*   **SAT Vocabulary:** Uses a curated list of SAT words.
-*   **Levels:** Words are grouped into different difficulty levels.
-*   **Quiz Format:** A multiple-choice quiz where the user selects the correct meaning for a given word.
-*   **Scoring:** Tracks the user's score for each level.
-*   **Immediate Feedback:** Shows whether the selected answer is correct or incorrect.
+# 현재 변경 사항 계획
 
-## Current Plan
-
-The current plan is to refactor the application from a simple wordbook into an interactive SAT vocabulary quiz. The following steps will be taken:
-
-1.  **Create a word data source:** A new `sat_words.json` file will be created to store SAT words and their meanings, organized by difficulty level.
-2.  **Update the HTML structure:** The `index.html` file will be redesigned to include a level selection screen, the quiz interface (word display, multiple-choice options), a scoring display, and navigation buttons.
-3.  **Revamp the CSS:** The `style.css` will be updated to style the new quiz layout, including feedback styles for user answers.
-4.  **Implement the quiz logic:** The `main.js` file will be rewritten to:
-    *   Fetch the SAT words from `sat_words.json`.
-    *   Manage the quiz state (current level, score, current word).
-    *   Generate multiple-choice questions.
-    *   Handle user answers, provide feedback, and update the score.
-    *   Allow users to select a level and progress through the quiz.
+- **기능 추가:** 사용자가 단어를 클릭하면 유사어와 함께 의미가 표시되는 기능을 추가했습니다.
+- **UI 개선:** 전체적인 사용자 인터페이스를 한글화하고, 단어 상세 정보 섹션을 추가했습니다.
+- **배포:** GitHub를 통해 애플리케이션을 배포하여 다른 사람들이 액세스하고 사용할 수 있도록 합니다.
